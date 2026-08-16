@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Agustina Regular";
+  src: url("./assets/fonts/Agustina.woff") format("woff");
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-primary: #0ea5e9; /* sky-500 */
+  --color-secondary: #a855f7; /* purple-500 */
+  --font-signature: "Agustina Regular", cursive;
+}
+
+@layer base {
+  body {
+    @apply bg-[#060010] text-slate-200 antialiased font-sans overflow-x-hidden transition-colors duration-300;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-100 dark:bg-slate-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 hover:bg-slate-400 dark:bg-slate-800 rounded-full dark:hover:bg-slate-700 transition-colors;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/80 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200 dark:border-white/10;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:shadow-cyan-500/20;
+  }
+
+  @keyframes wave {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-10deg); }
+    20% { transform: rotate(12deg); }
+    30% { transform: rotate(-10deg); }
+    40% { transform: rotate(9deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+  }
+}

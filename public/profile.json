@@ -1,0 +1,44 @@
+{
+  "data": {
+    "user": {
+      "pinnedItems": {
+        "edges": [
+          {
+            "node": {
+              "id": "1",
+              "name": "portfolio",
+              "description": "My developer portfolio",
+              "url": "https://github.com",
+              "primaryLanguage": {
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "forkCount": 0,
+              "stargazers": {
+                "totalCount": 5
+              },
+              "diskUsage": 1500
+            }
+          },
+          {
+            "node": {
+              "id": "2",
+              "name": "react-project",
+              "description": "A cool react project",
+              "url": "https://github.com",
+              "primaryLanguage": {
+                "name": "JavaScript",
+                "color": "#f1e05a"
+              },
+              "forkCount": 2,
+              "stargazers": {
+                "totalCount": 10
+              },
+              "diskUsage": 2500
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,207 @@
+.orbit-section {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 40px 0;
+}
+
+/* RESPONSIVE FLUID CONTAINER */
+.orbit-container {
+  /* Using aspect-ratio 1/1 creates a perfect square responsive container */
+  width: min(95vw, 650px);
+  aspect-ratio: 1 / 1; 
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   CENTER LOGO
+========================= */
+
+.orbit-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  z-index: 100;
+  box-shadow: 0 0 50px rgba(0, 212, 255, 0.2);
+}
+
+.orbit-center > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.3));
+}
+
+/* =========================
+   ORBITS
+========================= */
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2), inset 0 0 15px rgba(0, 212, 255, 0.2);
+  transform-style: preserve-3d;
+  pointer-events: none; /* Let clicks pass through the track to inner orbits */
+}
+
+/* Uses percentages so they scale perfectly with the container */
+.orbit-outer {
+  width: 100%;
+  height: 100%;
+  animation: rotateTrack 28s linear infinite;
+}
+
+.orbit-middle {
+  width: 74%;
+  height: 74%;
+  animation: rotateTrack 20s linear infinite reverse;
+}
+
+.orbit-inner {
+  width: 50%;
+  height: 50%;
+  animation: rotateTrack 15s linear infinite;
+}
+
+/* Pause animation on hover */
+.orbit:hover, .orbit:hover .orbit-card-counter-rotator {
+  animation-play-state: paused;
+}
+
+/* =========================
+   SKILL CARDS (FLUID LAYOUT)
+========================= */
+
+.orbit-card-wrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  /* 50% height means it stretches from the center exactly to the edge */
+  height: 50%;
+  transform-origin: bottom center;
+}
+
+/* Counter Rotators */
+.orbit-card-counter-rotator {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.orbit-outer .orbit-card-counter-rotator {
+  animation: counterRotateTrack 28s linear infinite reverse;
+}
+.orbit-middle .orbit-card-counter-rotator {
+  animation: counterRotateTrack 20s linear infinite;
+}
+.orbit-inner .orbit-card-counter-rotator {
+  animation: counterRotateTrack 15s linear infinite reverse;
+}
+
+.orbit-card-content-wrapper {
+  position: absolute;
+  /* Inline style translate(-50%, -50%) will center this directly on the orbit line */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  pointer-events: auto; /* Re-enable pointer events for the skill cards */
+}
+
+.orbit-card-content-wrapper:hover {
+  z-index: 50;
+}
+
+.orbit-card {
+  position: relative;
+  /* Lock sizes to fixed pixels so icons don't shrink too small on mobile */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(10, 15, 25, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.2), inset 0 0 8px rgba(0, 212, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.orbit-card-content-wrapper:hover .orbit-card {
+  box-shadow: 0 0 20px currentColor, inset 0 0 12px currentColor;
+  border-color: currentColor;
+}
+
+.orbit-card-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.orbit-card-content-wrapper:hover .orbit-card-inner {
+  transform: scale(1.3);
+}
+
+.orbit-card-icon {
+  font-size: 20px;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.orbit-card-label {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  margin-top: 6px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+.orbit-card-content-wrapper:hover .orbit-card-label {
+  color: inherit;
+  text-shadow: 0 0 8px currentColor;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes rotateTrack {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes counterRotateTrack {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
