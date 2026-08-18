@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import Headroom from "react-headroom";
 import { ThemeContext } from "../../context/ThemeContext";
 import {
   greeting,
