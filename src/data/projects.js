@@ -7,7 +7,7 @@ export const projectsData = [
     categories: ["React", "Frontend", "Tailwind"],
     technologies: ["React.js", "Tailwind CSS", "React Router DOM", "JavaScript"],
     githubUrl: "https://github.com/",
-    liveUrl: "https://example.com"
+    liveUrl: "https://lee-beauty-pied.vercel.app/"
   },
   {
     id: 2,

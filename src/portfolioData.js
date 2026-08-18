@@ -290,7 +290,7 @@ const bigProjects = {
       footerLink: [
         {
           name: "Live Demo",
-          url: "https://projects-silk-kappa.vercel.app/"
+          url: "https://lee-beauty-pied.vercel.app/"
         },
         {
           name: "GitHub",
